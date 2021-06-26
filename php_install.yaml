@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+          - name: update apt list
+            apt:
+                    update_cache: yes
+          - name: install packages
+            action: apt pkg={{ item }} state=latest
+            with_items:
+                    - git
+                    - mcrypt
+                    - apache2
+                    - php
+                    - libapache2-mod-php
+
